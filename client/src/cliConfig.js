@@ -1,4 +1,14 @@
 export default class CliConfig {
+    constructor({ username, room, hostUri }) {
+        this.username = username
+        this.room = room
+
+        const { hostname, port, protocol } = new URL(hostUri)
+
+        this.host = hostname
+        this.port = port
+        this.protocol = protocol.replace(/\W/, '')
+    }
     static parseArguments(commands){
         const cmd = new Map()
         for (const key in commands) {
@@ -12,8 +22,7 @@ export default class CliConfig {
             )
         }
 
-        return cmd
-
+        return new CliConfig(Object.fromEntries(cmd))
     }
 
 }
