@@ -1,5 +1,6 @@
 import http from 'http'
 import { v4 } from 'uuid'
+import { constants } from './constants.js'
 
 export default class SocketServer {
     constructor({ port }) {
@@ -23,6 +24,7 @@ export default class SocketServer {
            ].map(line => line.concat('\r\n')).join('')
            
            socket.write(headers)
+           eventEmitter.emit(constants.event.NEW_USER_CONNECTED, socket)
         })
 
         return new Promise((resolve, reject) => {
