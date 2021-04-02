@@ -5,9 +5,7 @@ export default class SocketClient {
         this.host = host,
         this.port = port, 
         this.protocol = protocol
-
     }
-
 
     async createConnection() {
 

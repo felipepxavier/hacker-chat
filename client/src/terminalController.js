@@ -90,10 +90,10 @@ export default class TerminalController {
         components.screen.render()
 
       
-        const users = ['felipepxavier']
-        eventEmitter.emit(constants.events.app.STATUS_UPDATED,  users)
-        users.push('sebastion')
-        eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
+        // const users = ['felipepxavier']
+        // eventEmitter.emit(constants.events.app.STATUS_UPDATED,  users)
+        // users.push('sebastion')
+        // eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
        
     }
 
