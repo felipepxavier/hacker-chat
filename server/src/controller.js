@@ -44,15 +44,19 @@ export default class Controller {
 
     #onSocketClosed(id) {
         return data => {
-            console.log('onSocketClosed', data.toString())
+            console.log('onSocketClosed', id)
 
         }
     }
 
     #onSocketData(id) {
         return data => {
-            const { event, message } = JSON.parse(data)
-            this[event](id. message)
+            try {
+                const { event, message } = JSON.parse(data)
+                this[event](id, message)
+            } catch (error) {
+                console.error(`wrong event format!`, data.toString())
+            }
         }
     }
 
