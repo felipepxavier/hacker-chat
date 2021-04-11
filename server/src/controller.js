@@ -20,9 +20,11 @@ export default class Controller {
     }
 
     async joinRoom(socketId, data) {
-        const userData = JSON.parse(data)
-        console.log(`${userData.userName} joined!` [socketId])
+        const userData = data
+        console.log(`${userData.userName} joined! ${[socketId]}`)
         const  { roomId } = userData
+
+        const user = this.#updateGlobalUserData(socketId, userData)
         const users = thisd.joinUserOnRoom(roomId, user)
 
         const currentUsers = Array.from(users.values())
@@ -31,7 +33,7 @@ export default class Controller {
         this.socketServer
         .sendMessage(user.socket, constants.event.UPDATE_USERS, currentUsers)
 
-        const user = this.#updateGlobalUserData(socketId, userData)
+        
     }
 
     #joinUserOnRoom(roomId, user) {

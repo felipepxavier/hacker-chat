@@ -1,3 +1,4 @@
+
 export default class SocketClient {
     #serverConnection = {}
 
